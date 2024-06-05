@@ -1,3 +1,7 @@
+<?php
+require 'nav.php';
+// session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -254,121 +258,91 @@
             }
         }
         @media (max-width: 480px) {
-    .label-input100 {
-        text-align: left;
-        position: unset;
-        top: unset;
-        left: unset;
-        width: 100%;
-        padding: 0 5px;
-        color: #4a4949;    
-        font-weight: 600;
-    }
+            .label-input100 {
+                text-align: left;
+                position: unset;
+                top: unset;
+                left: unset;
+                width: 100%;
+                padding: 0 5px;
+                color: #4a4949;    
+                font-weight: 600;
+            }
     
-}
-
-.footer-widget {
-    box-sizing: border-box;
-    background: #5e6974;
-    font-family: poppins, sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    font-weight: 400;
-    color: #ffffff;
-    line-height: 1.8;
-    width: 100%;
-}
-.footer-widget i, .footer-widget-title {
+        }
+        .footer-widget {
+            box-sizing: border-box;
+            background: #5e6974;
+            font-family: poppins, sans-serif;
+            font-style: normal;
+            font-size: 16px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.8;
+            width: 100%;
+        }
+        .footer-widget i, .footer-widget-title {
     
-   color: #003687;
-}
-.footer-widget-wrapper {
-    justify-content: space-between;
-}
-.footer-widget img{
-    width: 110px;
-}
-.footer-widget-box {
-    margin-bottom: 20px;
-}
-.footer-widget-box a {
-    text-decoration: none;
-}
-.footer-contact li {
-    display: flex;
-    gap: 15px;
-    justify-content: start;
-    align-items: center;
-    color: #f5faff;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-.footer-list li {
-    list-style: none;
-}
-.footer-list li a {
-    color: #ffffff;
-    text-decoration: none;
-}
+             color: #003687;
+        }
+        .footer-widget-wrapper {
+             justify-content: space-between;
+        }
+        .footer-widget img{
+            width: 110px;
+        }
+        .footer-widget-box {
+            margin-bottom: 20px;
+        }
+        .footer-widget-box a {
+            text-decoration: none;
+        }
+        .footer-contact li {
+            display: flex;
+            gap: 15px;
+            justify-content: start;
+            align-items: center;
+            color: #f5faff;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .footer-list li {
+            list-style: none;
+        }
+        .footer-list li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
     
-     <!-- navbar -->
-     <nav class="navbar navbar-expand-lg bg-transparent">
-        <div class="container">
+    
 
-       <a class="navbar-brand" href="#"><img src="Assets/spride.png" alt="logo" style="width: 110px;"></a>
+   <?php
+$wr_pass=0;
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    require 'Admin/Functions/connection.php';
+    require 'Admin/Functions/encryption.php';
+    $mail=$_POST['mail'];
+    $pass=enc($_POST['pass']);
+    $check_query="SELECT * FROM user WHERE email='$mail' AND password='$pass'";
+    $run_check_query = mysqli_query($conn,$check_query);
+    if(mysqli_num_rows($run_check_query)==1){
+        // session_start();
+        $_SESSION['USER_MAIL']=$mail;
+        $_SESSION['EN_PSW']=$pass;
+        ?>
+        <script>window.location='index.php'</script>
+        <?php
+    }
+    else{
+        $wr_pass=1;
+    }
+}
 
-       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon" style="position: relative;">
-               <svg style="border: 4px solid rgb(24, 0, 162);
-                   border-radius: 11px;
-                   width: 56px;
-                   height: 41px;
-                   position: absolute;
-                   top: -6px;
-                   left: -13px;    
-               " xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                   <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-               </svg>
-           </span>
-       </button>
-
-       <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-
-           <div class="offcanvas-header"><img src="Assets/spride.png" alt="logo" style="width: 110px;">
-               <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
-               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-           </div>
-
-           <div class="offcanvas-body d-flex flex-lg-row flex-column" style="font-family: Poppins,sans-serif;">
-               <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3 fw-medium gap-lg-4">
-                   <li class="nav-item">
-                       <a class="nav-link mymenu" aria-current="page" href="index.html">Home</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link mymenu" href="#">Bike List</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link mymenu" href="#">Brand</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link mymenu" href="#">About us</a>
-                   </li>
-               </ul>
-
-               <div class="d-flex flex-lg-row justify-content-center align-items-center gap-3" style="font-family: Poppins,sans-serif;">
-                   <a href="" class="text-decoration-none px-3 py-1 bg-primary text-white rounded-4 btnhover">Login</a>
-                   <a href="signup.html" class=" active text-decoration-none px-3 py-1 bg-primary text-white rounded-4 btnhover">Sign
-                       Up</a>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </nav>
-
+?>
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -377,10 +351,10 @@
                         LOGIN TO SPARK RIDE
                     </span>
                 </div>
-                <form class="login100-form validate-form">
+                <form class="login100-form validate-form" method="POST">
                     <div class="wrap-input100 validate-input m-b-26">
                         <span class="label-input100 ">EMAIL</span>
-                        <input class="input100" type="email" name="emai" placeholder="Enter email" required>
+                        <input class="input100" type="email" name="mail" placeholder="Enter email" required>
                         <span class="focus-input100"></span>
                     </div>
                     <div class="wrap-input100 validate-input m-b-18">
@@ -388,6 +362,11 @@
                         <input class="input100" type="password" name="pass" placeholder="Enter password" required>
                         <span class="focus-input100"></span>
                     </div>
+                    <?php
+                        if($wr_pass==1){
+                            echo"<div class='text-danger mt-2'>Invalid Credentials</div>";
+                        }
+                    ?>
                     <div class="flex-sb-m w-full p-b-30">
                         <div>
                             <a href="#" class="txt1">
@@ -465,3 +444,4 @@
 </body>
 
 </html>
+

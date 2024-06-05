@@ -70,18 +70,27 @@ body{
 .field-group{
     display: flex;
     align-items: center;
-    gap:1.3rem;
+    gap:4rem;
     /* gap:18px; */
     width: 85%;
 }
 .field_title{
+    width: 9rem;
     font-family: Poppins,sans-serif;
     font-weight: 500;
     font-size: 1.3rem;
     color:#007bff;
-}.field-group [type="text"],[type="email"],[type="date"]{
-    width: 80% !important;
+}
+.field-group [type="text"],[type="email"],[type="date"],[type="number"], [type="file"], textarea, select{
+    width: 60% !important;
     height: 50px;
+    font-family: Poppins, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: large !important;
+}
+.field-group textarea{
+    width: 60% !important;
+    height: 90px !important;
     font-family: Poppins, sans-serif !important;
     font-weight: 600 !important;
     font-size: large !important;
