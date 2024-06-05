@@ -90,8 +90,8 @@ require 'nav.html';
                     </div>
                     
                     <div class="field-group" style="gap:4.4rem">
-                        <div class="field_title">Email</div>
-                        <input type="text" id="disabledTextInput" class="form-control" value="rakeshgarai23@gmail.com" disabled>
+                        <div class="field_title">Mobile No</div>
+                        <input type="number" id="disabledTextInput" class="form-control" value="9593405410" disabled>
                     </div>
                     
                     <div class="field-group" style="gap:4.4rem">
