@@ -90,6 +90,11 @@ require 'nav.html';
                     </div>
                     
                     <div class="field-group" style="gap:4.4rem">
+                        <div class="field_title">Email</div>
+                        <input type="text" id="disabledTextInput" class="form-control" value="rakeshgarai23@gmail.com" disabled>
+                    </div>
+                    
+                    <div class="field-group" style="gap:4.4rem">
                         <div class="field_title">Gender</div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
