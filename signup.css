@@ -1,0 +1,152 @@
+.mymenu {
+    position: relative;
+}
+
+.mymenu::after {
+    content: "";
+    top: 36px;
+    left: 3px;
+    position: absolute;
+    background-color: #017bfd;
+    height: 2px;
+    width: 0px;
+    transition: 0.2s;
+}
+
+.mymenu:hover::after {
+    width: 93% !important;
+}
+.btnhover:hover {
+    background-color: #003687 !important;
+    transition: 0.2s;
+}
+
+.form-div{
+    box-shadow: 1px 1px 10px 2px #36383b;
+    border-radius: 15px;
+    padding: 0;
+    width: 670px ;
+    
+}
+form{
+    font-family: Poppins,sans-serif;
+    font-weight: 550;
+}
+input{
+    border-radius: 1rem;
+    border: 1px #003687;
+    box-shadow: 1px 3px 8px 1px #003687;
+}
+p{
+    margin-top: 0.8rem;
+    font-family: Poppins,sans-serif;
+    font-weight: 300;
+    margin-bottom: 0px;
+}
+.signupbtn{
+    border-radius: 1rem;
+    width: 7rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 1.5rem;
+    background-color: #017bfd;
+    border: 1px #003687;
+    font-family: Poppins,sans-serif;
+    font-weight: bold;
+    color: aliceblue;
+    padding: 0.4rem;
+}
+
+
+.photo img{
+    width: 100%;
+    
+}
+.photo {
+    position: relative;
+    width: 100%;
+    background-image: url(Assets/cool-motorcycle-studio.jpg);
+    background-size:cover;
+    background-position:center;
+    z-index: 1;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    
+   }
+  
+   .photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    background-color: rgba(54, 54, 54, 0.752);
+    z-index: -1;
+    backdrop-filter: blur(5px);
+   
+  }
+  @media screen and (max-width: 576px) {
+    .form-div{
+        flex-direction: column;
+        margin: 2rem;
+    }
+    .main-form{
+        width: 100% !important;
+    }
+    .photo{
+        width: 100% !important;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 0px;
+        
+    }
+    .photo::after{
+        width: 100% !important;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 0px;
+    }
+  }
+
+
+  .footer-widget {
+    box-sizing: border-box;
+    background: #5e6974;
+    font-family: poppins, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.8;
+    width: 100%;
+}
+.footer-widget i, .footer-widget-title {
+    
+   color: #003687;
+}
+.footer-widget-wrapper {
+    justify-content: space-between;
+}
+.footer-widget img{
+    width: 110px;
+}
+.footer-widget-box {
+    margin-bottom: 20px;
+}
+.footer-widget-box a {
+    text-decoration: none;
+}
+.footer-contact li {
+    display: flex;
+    gap: 15px;
+    justify-content: start;
+    align-items: center;
+    color: #f5faff;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.footer-list li {
+    list-style: none;
+}
+.footer-list li a {
+    color: #ffffff;
+    text-decoration: none;
+}
