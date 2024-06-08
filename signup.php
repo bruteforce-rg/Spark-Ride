@@ -231,6 +231,7 @@ require 'nav.php';
             console.log('Mobile Number Should be start with 6 or 7 or 8 or 9')
         }
     </script> -->
+    <!-- <script></script> -->
 </body>
 
 </html>
