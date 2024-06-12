@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 04:39 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jun 12, 2024 at 10:58 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,16 +89,17 @@ CREATE TABLE `user` (
   `address` varchar(150) NOT NULL,
   `reg_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `otp` int(11) NOT NULL,
-  `active` enum('0','1') NOT NULL DEFAULT '0'
+  `active` enum('0','1') NOT NULL DEFAULT '0',
+  `vfst` enum('0','1') NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `fname`, `lname`, `dl_no`, `email`, `password`, `dob`, `phone_no`, `city`, `state`, `pincode`, `address`, `reg_time`, `otp`, `active`) VALUES
-('SPR148514', 'Amrita', 'Ghosh', 'Wb157vgh', 'amrita261103@gmail.com', '00/CNx+q8DXd+ptxtOYsAw==', '0000-00-00', 9339707050, '', '', 0, '', '0000-00-00 00:00:00', 0, '0'),
-('SPR901473', 'rakesh', 'garai', '1', 'rakeshgarai23@gmail.com', 'kQx4JEBCmQIH/+WjcKpnNw==', '0000-00-00', 1, '', '', 0, '', '2024-06-02 19:20:00', 568072, '1');
+INSERT INTO `user` (`id`, `fname`, `lname`, `dl_no`, `email`, `password`, `dob`, `phone_no`, `city`, `state`, `pincode`, `address`, `reg_time`, `otp`, `active`, `vfst`) VALUES
+('SPR280157', 'Amrita', 'Ghosh', 'abc123', 'amrita261103@gmail.com', 'FcUN5/6acNobNK5jkYJ/vw==', '0000-00-00', 9339707050, '', 'Bihar', 0, '', '2024-06-11 05:39:30', 540302, '1', '1'),
+('SPR901473', 'rakesh', 'garai', '1', 'rakeshgarai23@gmail.com', 'kQx4JEBCmQIH/+WjcKpnNw==', '0000-00-00', 1, '', '', 0, '', '2024-06-02 19:20:00', 568072, '1', '0');
 
 --
 -- Indexes for dumped tables
