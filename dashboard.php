@@ -1,7 +1,8 @@
 <?php
 require 'nav.php';
+if (isset($_SESSION['USER_MAIL']) && isset($_SESSION['EN_PSW']) && $_SESSION['EN_PSW'] != '')
+{
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +24,33 @@ require 'nav.php';
 
 </head>
 <body>
+
+<?php
+require 'Admin/Functions/connection.php';
+
+$mail=$_SESSION['USER_MAIL'];
+$fet_query="SELECT * FROM user WHERE email='$mail'";
+$run_query=mysqli_query($conn,$fet_query);
+
+while($row=mysqli_fetch_assoc($run_query)){
+
+    $fname=$row['fname'];
+    $lname=$row['lname'];
+    $name = $fname ." ". $lname;
+    $user_id =$row['id'];
+    $email =$row['email'];
+    $mno =$row['phone_no'];
+    $dob =$row['dob'];
+    $add =$row['address'];
+    $pin =$row['pincode'];
+    $city =$row['city'];
+    $state =$row['state'];
+    $dlno=$row['dl_no'];
+    $vs =$row['vfst'];
+
+}
+
+?>
     
     <div class="content container mt-5 d-flex gap-2">
         <!-- sidebox -->
@@ -71,27 +99,27 @@ require 'nav.php';
                     
                     <div class="field-group">
                         <div class="field_title">User id</div>
-                        <input type="text" id="disabledTextInput" class="form-control" value="SPR148514" disabled>
+                        <input type="text" id="disabledTextInput" class="form-control" value=<?php echo $user_id ?>  disabled>
                     </div>
                     
                     <div class="field-group">
                         <div class="field_title">First Name</div>
-                        <input type="text" id="disabledTextInput" class="form-control" value="Rakesh">
+                        <input type="text" id="disabledTextInput" class="form-control" value=<?php echo $fname ?>>
                     </div>
                     
                     <div class="field-group">
                         <div class="field_title">Last Name</div>
-                        <input type="text" id="disabledTextInput" class="form-control" value="Garai">
+                        <input type="text" id="disabledTextInput" class="form-control" value=<?php echo $lname ?>>
                     </div>
                     
                     <div class="field-group" >
                         <div class="field_title">Email</div>
-                        <input type="email" id="disabledTextInput" class="form-control" value="rakeshgarai23@gmail.com" disabled>
+                        <input type="email" id="disabledTextInput" class="form-control" value=<?php echo $email ?> disabled>
                     </div>
                     
                     <div class="field-group">
                         <div class="field_title">Mobile No.</div>
-                        <input type="number" id="disabledTextInput" class="form-control" value="9593405410" disabled>
+                        <input type="number" id="disabledTextInput" class="form-control" value=<?php echo $mno ?> disabled>
                     </div>
                     
                     <!-- <div class="field-group" style="gap:4.4rem">
@@ -114,36 +142,40 @@ require 'nav.php';
                     
                     <div class="field-group" >
                         <div class="field_title">Date of Birth</div>
-                        <input type="date" class="form-control" value="2003-08-10">
+                        <input type="date" class="form-control" value=<?php echo $dob ?>>
                     </div>
                     
                     <div class="field-group" >
                         <div class="field_title">Address</div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <input type='textarea' class="form-control" id="exampleFormControlTextarea1" value=<?php echo $add ?>>
                     </div>
                     
                     <div class="field-group">
                         <div class="field_title">Pincode</div>
-                        <input type="number" class="form-control" value="731101">
+                        <input type="number" class="form-control" value=<?php echo $pin ?>>
                     </div>
 
                     <div class="field-group">
                         <div class="field_title">City</div>
-                        <input type="text" class="form-control" value="Suri">
+                        <input type="text" class="form-control" value=<?php echo $city ?>>
                     </div>
 
                     <div class="field-group">
                         <div class="field_title">State</div>
                         <select class="form-select">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option>Select</option>
+                            <option value="West Bengal" <?php if($state=="West Bengal")
+                            {echo "selected";} ?>>West Bengal</option>
+                            <option value="Bihar"<?php if($state=="Bihar")
+                            {echo "selected";} ?>>Bihar</option>
+                            <option value="Punjab" <?php if($state=="Punjab")
+                            {echo "selected";} ?>>Punjab<option>
                         </select>
                     </div>
 
                     <div class="field-group">
                         <div class="field_title">Driving License No.</div>
-                        <input type="text" class="form-control" value="SPR148514">
+                        <input type="text" class="form-control" value=<?php echo $dlno?>>
                     </div>
                     
                     <div class="field-group">
@@ -153,8 +185,16 @@ require 'nav.php';
 
                     <div class="field-group">
                         <div class="field_title">Verification Status</div>
-                        <i class="fa-solid fa-badge-check fa-2x text-success" style="font-family: 'Font Awesome 6 Pro'"></i>
-                    </div>
+                        <?php if($vs==1)
+                        {echo '<i class="fa-solid fa-badge-check fa-2x text-success" style="font-family: '."'Font Awesome 6 Pro'".'"></i>';} ?>
+
+                    <?php if($vs==0)
+                    {
+                       echo  '<i class="fa-solid fa-square-xmark fa-2x text-danger"style="font-family: "Font Awesome 6 Pro""></i>';
+                    }?>
+
+
+                    </div>  
                     
 
                     
@@ -169,6 +209,18 @@ require 'nav.php';
 </body>
 </html>
 
+
 <?php
 require 'footer.html';
 ?>
+<?php
+}
+else
+{
+    ?>
+    <script>window.location='login.php'</script>
+    <?php
+}
+?>
+
+

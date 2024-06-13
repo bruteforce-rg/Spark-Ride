@@ -81,7 +81,7 @@ body{
     font-size: 1.3rem;
     color:#007bff;
 }
-.field-group [type="text"],[type="email"],[type="date"],[type="number"], [type="file"], textarea, select{
+.field-group [type="text"],[type="email"],[type="date"],[type="number"], [type="file"], [type='textarea'], select{
     width: 60% !important;
     height: 50px;
     font-family: Poppins, sans-serif !important;
